@@ -4,9 +4,10 @@ stack_node	*new_stack(int *arr, int size)
 {
 	stack_node		*ptr;
 
+	ptr = NULL;
 	while (size > 0)
 	{
-		push(&ptr, arr[size-1]);
+		ptr = push(ptr, arr[size-1]);
 		size--;
 	}
 	return (ptr);

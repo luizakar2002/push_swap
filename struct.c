@@ -18,24 +18,48 @@ stack_node	*ft_lstlast(stack_node *lst)
 	return (lst);
 }
 
-void		push(stack_node **lst, int data)
+stack_node	*push(stack_node *lst, int data)
 {
 	stack_node	*new;
 	new = new_node(data);
-	new->next = *lst;
-	*lst = new;
+	if (!lst)
+	{
+		new->next = NULL;
+		lst = new;
+	}
+	else
+	{
+		new->next = lst;
+		lst = new;
+	}
+	return (lst);
 }
 
-int			pop(stack_node **lst)
+stack_node	*pop(stack_node *lst)
 {
 	stack_node	*t;
 	int			popped;
 
-	if (!*lst)
+	if (!lst)
 		error_exit(0);
-	t = *lst;
-	*lst = (*lst)->next;
+	t = lst;
+	lst = lst->next;
 	popped = t->data;
 	free(t);
-	return (popped);
+	printf("popped %d\n", popped);
+	printf("pd %d\n", lst->data);
+	return (lst);
+}
+
+int		list_length(stack_node  *lst)
+{
+	int size;
+
+	size = 0;
+	while (lst != NULL)
+	{
+		size++;
+		lst = lst->next;
+	}
+	return (size);
 }

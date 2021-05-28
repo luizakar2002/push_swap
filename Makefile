@@ -7,7 +7,8 @@ SRC			= main.c \
 			get_ints.c \
 		 	utils.c	\
 		   	new_stack.c \
-			struct.c
+			struct.c \
+			functions.c
 
 SRCS		= $(addprefix $(DIR_SRCS), $(SRC))
 
@@ -21,7 +22,7 @@ GCC			= gcc
 
 RM			= rm -f
 
-CFLAGS		= -Wall -Werror -Wextra
+CFLAGS		= -Wall -Werror -Wextra 
 
 %.o: %.c
 			$(GCC) $(CFLAGS) -I $(DIR_HEADERS) -c $< -o $@

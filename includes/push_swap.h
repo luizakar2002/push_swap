@@ -14,5 +14,6 @@ typedef struct stack
 #include "error_exit.h"
 #include "utils.h"
 #include "struct.h"
+#include "functions.h"
 
 #endif
