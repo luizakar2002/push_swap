@@ -1,4 +1,4 @@
-#include "/Users/lukarape/Desktop/push_swap/includes/push_swap.h"
+#include "push_swap.h"
 
 int		count_spaces(char *str)
 {
@@ -48,4 +48,42 @@ int		*get_ints(char *argv)
 		str++;
 	}
 	return (ret);
+}
+
+int		*data_to_array(stack_node *a)
+{
+	int		*arr;
+	int		i;
+	int		n;
+
+	n = list_length(a);
+	if (!(arr = malloc(n * sizeof(int))))
+		return (NULL);
+	i = 0;
+	while (a)
+	{
+		arr[i] = a->data;
+		a = a->next;
+		i++;
+	}
+	return (arr);
+}
+
+int		*chunk_to_array(stack_node *b)
+{
+	int *arr;
+	int i;
+	int n;
+
+	n = chunk_length(b);
+	if (!(arr = malloc(n * sizeof(int))))
+		return (NULL);
+	i = 0;
+	while (b && i < n)
+	{
+		arr[i] = b->data;
+		b = b->next;
+		i++;
+	}
+	return (arr);
 }

@@ -7,6 +7,7 @@ stack_node	*new_node(int data)
 	if (!(new = malloc(sizeof(stack_node))))
 		error_exit(-1);
 	new->data = data;
+	new->chunk = 0;
 	new->next = NULL;
 	return (new);
 }
@@ -18,37 +19,24 @@ stack_node	*ft_lstlast(stack_node *lst)
 	return (lst);
 }
 
-stack_node	*push(stack_node *lst, int data)
+void		push(stack_node **lst, int data)
 {
 	stack_node	*new;
+
 	new = new_node(data);
-	if (!lst)
-	{
-		new->next = NULL;
-		lst = new;
-	}
-	else
-	{
-		new->next = lst;
-		lst = new;
-	}
-	return (lst);
+	new->next = *lst;
+	*lst = new;
 }
 
-stack_node	*pop(stack_node *lst)
+void		pop(stack_node **lst)
 {
 	stack_node	*t;
-	int			popped;
 
-	if (!lst)
+	if (!*lst)
 		error_exit(0);
-	t = lst;
-	lst = lst->next;
-	popped = t->data;
+	t = *lst;
+	*lst = (*lst)->next;
 	free(t);
-	printf("popped %d\n", popped);
-	printf("pd %d\n", lst->data);
-	return (lst);
 }
 
 int		list_length(stack_node  *lst)
@@ -56,10 +44,46 @@ int		list_length(stack_node  *lst)
 	int size;
 
 	size = 0;
-	while (lst != NULL)
+	while (lst)
 	{
-		size++;
 		lst = lst->next;
+		size++;
 	}
 	return (size);
+}
+
+stack_node	*ft_lstprev(stack_node *lst)
+{
+	while (lst && lst->next && lst->next->next)
+		lst = lst->next;
+	return (lst);
+}
+
+int		chunk_length(stack_node *ptr)
+{
+	int count;
+
+	count = 0;
+	if (ptr->next && ptr->next->next && ptr->next->next->next && ptr->chunk == 1 && ptr->next->chunk == 1 && ptr->next->next->chunk == 1 && ptr->next->next->next->chunk == 1)
+		return (1);
+	if (ptr->next->chunk == 2 && ptr->chunk == 1)
+		return (1);
+	while (ptr)
+	{
+		//printf("%d %d\n", (ptr)->chunk, ft_lstlast(ptr)->chunk);
+		if (ptr->chunk == 1)
+		{
+			ptr = ptr->next;
+			while (ptr && ptr->chunk == 0)
+			{
+				ptr = ptr->next;
+				count++;
+			}
+			count += 2;
+			return (count);
+		}
+		//if (ptr->next != NULL)
+			ptr = ptr->next;
+	}
+	return (count);
 }

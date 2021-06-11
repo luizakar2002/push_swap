@@ -1,14 +1,13 @@
 #include "push_swap.h"
 
-stack_node	*new_stack(int *arr, int size)
+stack_node	**new_stack(stack_node **ptr, int *arr, int size)
 {
-	stack_node		*ptr;
-
-	ptr = NULL;
 	while (size > 0)
 	{
-		ptr = push(ptr, arr[size-1]);
+		push(ptr, arr[size-1]);
 		size--;
 	}
+	(*ptr)->chunk = 1;
+	ft_lstlast(*ptr)->chunk = 1;
 	return (ptr);
 }

@@ -8,7 +8,11 @@ SRC			= main.c \
 		 	utils.c	\
 		   	new_stack.c \
 			struct.c \
-			functions.c
+			functions.c \
+			three_n.c \
+			midpoint.c \
+			divide_a.c \
+			divide_b.c
 
 SRCS		= $(addprefix $(DIR_SRCS), $(SRC))
 

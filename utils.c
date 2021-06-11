@@ -1,4 +1,4 @@
-#include "/Users/lukarape/Desktop/push_swap/includes/push_swap.h"
+#include "push_swap.h"
 
 int		ft_strlen(const char *str)
 {
@@ -57,4 +57,57 @@ int		ft_atoi(const char *str)
 		str++;
 	}
 	return (nb * sign);
+}
+
+void	insertionSort(int *arr, int n)
+{
+    int i;
+	int key;
+	int j;
+    for (i = 1; i < n; i++)
+	{
+		key = arr[i];
+		j = i - 1;
+		while (j >= 0 && arr[j] > key) {
+			arr[j + 1] = arr[j];
+			j = j - 1;
+		}
+		arr[j + 1] = key;
+	}
+}
+
+void	print_stack(stack_node *a)
+{
+	int size;
+	
+	size = list_length(a);
+	printf("\n\n");
+	while (size > 0)
+	{
+		printf("d %5d c %5d\n", a->data, a->chunk);
+		a = a->next;
+		size--;
+	}
+	printf("\n\n");
+}
+
+int		sorted(stack_node *a)
+{
+	int *arr;
+	int	*arr1;
+	int n;
+	
+	arr = data_to_array(a);
+	arr1 = data_to_array(a);
+	n = list_length(a);
+	insertionSort(arr1, n);
+	while (n > 0 && *arr == *arr1)
+	{
+		n--;
+		arr--;
+		arr1--;
+	}
+	if (n == 0)
+		return (1);
+	return (0);
 }
