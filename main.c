@@ -24,14 +24,103 @@ int	main(int argc, char **argv)
 	//ft_lstlast(*a)->chunk = 1;
 	//divide_a(a, b);
 	//printf("a\n");
-//	print_stack(*a);
+	//print_stack(*a);
 	sort_a(a, b, list_length(*a));
 	//divide_a(a, b);
-	printf("\nmain a\n");
+	printf("\nmain a_divide_1\n");
 	print_stack(*a);
 	printf("\nmain b\n");
 	print_stack(*b);
-	//divide_b(a, b);
-	//printf("\n main b\n");
-	//print_stack(*b);
+	/*
+	divide_b(a, b);
+	printf("\nmain a\n");
+	print_stack(*a);
+	printf("\n main b_divide_1\n");
+	print_stack(*b);
+
+	divide_a(a, b);
+	printf("\nmain a_divide_2\n");
+	print_stack(*a);
+	printf("\nmain b\n");
+	print_stack(*b);
+
+	divide_b(a, b);
+	printf("\nmain a\n");
+	print_stack(*a);
+	printf("\nmain b_divide_2");
+	print_stack(*b);
+
+	divide_a(a, b);
+	printf("\nmain a_divide_3\n");
+	print_stack(*a);
+	printf("\nmain b\n");
+	print_stack(*b);
+
+	divide_b(a, b);
+	printf("\nmain a\n");
+	print_stack(*a);
+	printf("\nmain b_divide_3");
+	print_stack(*b);
+	
+	
+	divide_a(a, b);
+	printf("\nmain a_divide_4\n");
+	print_stack(*a);
+	printf("\nmain b\n");
+	print_stack(*b);
+	
+	divide_b(a, b);
+	printf("\nmain a\n");
+	print_stack(*a);
+	printf("\nmain b_divide_4");
+	print_stack(*b);
+	
+	divide_a(a, b);
+	printf("\nmain a_divide_5\n");
+	print_stack(*a);
+	printf("\nmain b\n");
+	print_stack(*b);
+
+	divide_b(a, b);
+	printf("\nmain a\n");
+	print_stack(*a);
+	printf("\nmain b_divide_5");
+	print_stack(*b);
+	
+	divide_a(a, b);
+	printf("\nmain a_divide_6\n");
+	print_stack(*a);
+	printf("\nmain b\n");
+	print_stack(*b);
+
+	divide_b(a, b);
+	printf("\nmain a\n");
+	print_stack(*a);
+	printf("\nmain b_divide_6");
+	print_stack(*b);
+
+	divide_a(a, b);
+	printf("\nmain a_divide_7\n");
+	print_stack(*a);
+	printf("\nmain b\n");
+	print_stack(*b);
+
+	divide_b(a, b);
+	printf("\nmain a\n");
+	print_stack(*a);
+	printf("\nmain b_divide_7");
+	print_stack(*b);
+
+	divide_a(a, b);
+	printf("\nmain a_divide_8\n");
+	print_stack(*a);
+	printf("\nmain b\n");
+	print_stack(*b);
+
+	divide_b(a, b);
+	printf("\nmain a\n");
+	print_stack(*a);
+	printf("\nmain b_divide_8");
+	print_stack(*b);
+	*/
 }

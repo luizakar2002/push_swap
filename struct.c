@@ -32,8 +32,10 @@ void		pop(stack_node **lst)
 {
 	stack_node	*t;
 
-	if (!*lst)
+	if (!(*lst))
 		error_exit(0);
+	if (!(*lst)->next)
+		(*lst)->next = NULL;
 	t = *lst;
 	*lst = (*lst)->next;
 	free(t);
@@ -64,9 +66,15 @@ int		chunk_length(stack_node *ptr)
 	int count;
 
 	count = 0;
+	if (ptr->next && ptr->next->next && ptr->chunk ==  1 && ptr->next->chunk == 1 && ptr->next->next->chunk == 0)
+		return (1);
 	if (ptr->next && ptr->next->next && ptr->next->next->next && ptr->chunk == 1 && ptr->next->chunk == 1 && ptr->next->next->chunk == 1 && ptr->next->next->next->chunk == 1)
 		return (1);
-	if (ptr->next->chunk == 2 && ptr->chunk == 1)
+	if (ptr->next && ptr->next->chunk == 2 && ptr->chunk == 1)
+		return (1);
+	if (ptr && !ptr->next && ptr->chunk != 2)
+		return (1);
+	if (ptr->next && ptr->next->next && ptr->next->next->next && ptr->chunk == 1 && ptr->next->chunk == 1 && ptr->next->next->chunk == 1 && ptr->next->next->next->chunk == 2)
 		return (1);
 	while (ptr)
 	{

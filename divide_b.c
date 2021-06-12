@@ -4,12 +4,17 @@ void	divide_b(stack_node **a, stack_node **b)
 {
 	int m;
 	int n;
+	int check;
 	int ch_l;
 	int count;
 	int rotate;
 
 	n = 0;
-	while (chunk_length(*b) != 2 && chunk_length(*b) != 1)
+	if (*b == NULL)
+		return ;
+	//printf("ch %d", chunk_length(*b));
+	printf("hesa\n");
+	while (chunk_length(*b) != 2 && chunk_length(*b) != 1 && (*b)->chunk != 2 && chunk_length(*b) != 0)
 	{
 		ch_l = chunk_length(*b);
 		m = midpoint(chunk_to_array(*b), ch_l);
@@ -18,6 +23,12 @@ void	divide_b(stack_node **a, stack_node **b)
 		n += ch_l / 2;
 		count = 0;
 		rotate = 0;
+		check = 0;
+		if (ch_l != list_length(*b))
+			check = 1;
+		(*b)->chunk = 0;
+		if (!check)
+			chunk_last(*b)->chunk = 0;
 		while ((*b)->data > m)
 		{
 			pa_pb(b, a);
@@ -25,6 +36,9 @@ void	divide_b(stack_node **a, stack_node **b)
 				(*a)->chunk = 1;
 			count++;
 		}
+		//printf("bbbbb\n");
+		//print_stack(*b);
+		//printf("bbbbb\n");
 		while (chunks_length(*a) != n)
 		{
 			if ((*b)->data > m)
@@ -37,33 +51,80 @@ void	divide_b(stack_node **a, stack_node **b)
 			else
 			{
 				ra_rb(b);
-				//if (is_chunk_2(*b))
+				if (check)
 					rotate++;
+				ft_lstlast(*b)->chunk = 0;
 			}
 		}
+
 		(*a)->chunk = 1;
+		if (ft_lstlast(*b)->chunk != 2)
+			ft_lstlast(*b)->chunk = 1;
 		while (rotate > 0)
 		{
 			rra_rrb(b);
 			rotate--;
 		}
 		(*b)->chunk = 1;
-		uncomplete_chunk_last(*b)->chunk = 1;
+	//	uncomplete_chunk_last(*b)->chunk = 1;
 	}
-	if (chunk_length(*b) == 1)
+	print_stack(*b);
+	if ((*b)->chunk == 2)
 	{
 		if ((*a)->chunk == 2)
 		{
+			pa_pb(b, a);
+			(*a)->chunk = 1;
+			if (sorted(*a))
+				(*a)->chunk = 2;
+			printf("so\n");
+			print_stack(*b);
+			//stexic ksharunakes es zibily
+			if(*b && (*b)->chunk == 2)
+			{
+				if (!(*b)->next)
+				{
+					pa_pb(b, a);
+					(*a)->chunk = 2;
+					return ;
+				}
+				pa_pb(b, a);
+				(*a)->chunk = 2;
+			}
+		}
+	}
+	printf("lll\n");
+	print_stack(*a);
+	print_stack(*b);
+	if (chunk_length(*b) == 1)
+	{
+		printf("mta");
+		if ((*a)->chunk == 2)
+		{
+			if (!(*b)->next)
+			{
+				pa_pb(b, a);
+				printf("sos\n");
+				print_stack(*a);
+				print_stack(*b);
+				*b = NULL;
+				b = NULL;
+				return ;
+			}
 			pa_pb(b, a);
 			(*a)->chunk = 2;
 		}
 		else
 		{
 			(*b)->chunk = 1;
+			if (!((*b)->next))
+				(*b)->chunk = 2;
 		}
 	}
+	printf("lala\n");
 	if (chunk_length(*b) == 2)
 	{
+		//printf("l\n");
 		if ((*b)->data < (*b)->next->data)
 			sa_sb(b);
 		if ((*a)->chunk == 2)
@@ -79,11 +140,33 @@ void	divide_b(stack_node **a, stack_node **b)
 			(*b)->next->chunk = 2;
 		}
 	}
-	if (list_length(*b) == 2)
+	/*
+	if (list_length(*b) == 2 && (*a)->chunk == 2)
 	{
 		pa_pb(b, a);
 		pa_pb(b, a);
 	}
+	*/
+	printf("la\n");
+	print_stack(*b);
+	if ((*b)->chunk == 2)
+	{
+		printf("l\n");
+		if ((*a)->chunk == 2)
+		{
+			pa_pb(b, a);
+			(*a)->chunk = 1;
+			if (sorted(*a))
+				(*a)->chunk = 2;
+			if(*b && (*b)->chunk == 2)
+			{
+				pa_pb(b, a);
+				(*a)->chunk = 2;
+			}
+		}
+	}
+	print_stack(*a);
+	print_stack(*b);
 	//./push_swap "21 34 5 3 7 1 9 8 0 88 77 66 22 56 65 44"
 	//./push_swap "2 4 0 1 3 5 8 10 14 6 11 7 9 12 13 15 16"
 }
