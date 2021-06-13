@@ -10,9 +10,14 @@ void	divide_a(stack_node **a, stack_node **b)
 	int rotate;
 	
 	n = 0;
+	//if (ft_lstlast(*b)->chunk != 2)
+	//	n = list_length(*b);
 	if ((*a)->chunk == 2)
 		return ;
-	printf("ch %d\n", chunk_length(*a));
+	//printf("cha %d\n", chunk_length(*a));
+	check = 0;
+	if (chunk_length(*a) != list_length(*a))
+		check = 1;
 	while (chunk_length(*a) != 2 && chunk_length(*a) != 1)
 	{
 		ch_l = chunk_length(*a);
@@ -21,9 +26,6 @@ void	divide_a(stack_node **a, stack_node **b)
 		n += ch_l / 2;
 		count = 0;
 		rotate = 0;
-		check = 0;
-		if (ch_l != list_length(*a))
-			check = 1;
 		(*a)->chunk = 0;
 		if (!check)
 			chunk_last(*a)->chunk = 0;
@@ -38,7 +40,9 @@ void	divide_a(stack_node **a, stack_node **b)
 		}
 		//print_stack(*a);
 		//print_stack(*b);
-		//printf("bbbb\n");
+		//printf("aaa\n");
+		//print_stack(*a);
+		//print_stack(*b);
 		//printf("verj\n");
 		while ((ft_lstlast(*a))->data < m)
 		{
@@ -48,7 +52,11 @@ void	divide_a(stack_node **a, stack_node **b)
 				(*b)->chunk = 1;
 			count++;
 		}
+		//printf("a222\n");
 		//print_stack(*a);
+		//print_stack(*b);
+		//printf("%d %d\n", n, chunks_length(*b));
+		//if ()
 		while (chunks_length(*b) != n)
 		{
 			if ((*a)->data < m)
@@ -66,7 +74,8 @@ void	divide_a(stack_node **a, stack_node **b)
 				ft_lstlast(*a)->chunk = 0;
 			}
 		}
-		print_stack(*a);
+		//printf("llllll\n");
+		//print_stack(*a);
 		(*b)->chunk = 1;
 		if(ft_lstlast(*a)->chunk != 2)
 			ft_lstlast(*a)->chunk = 1;
@@ -79,9 +88,9 @@ void	divide_a(stack_node **a, stack_node **b)
 		}
 		(*a)->chunk = 1;
 		//uncomplete_chunk_last(*a)->chunk = 1;
-		print_stack(*a);
-		print_stack(*b);
-		printf("verj\n");
+		//print_stack(*a);
+		//print_stack(*b);
+		//printf("verj\n");
 	}
 	//print_stack(*a);
 	if (chunk_length(*a) == 1)
@@ -130,10 +139,12 @@ void	sort_a(stack_node **a, stack_node **b, int n)
 	while (!(sorted(*a) && list_length(*a) == n))
 	{
 		divide_a(a, b);
-		printf("\na\n");
+		printf("\naaaaaa sort\n");
 		print_stack(*a);
+		printf("verj a sort\n");
 		divide_b(a, b);
-		printf("\nbbbbbbb\n");
+		printf("\nbbbbbbb sort\n");
 		print_stack(*b);
+		printf("verj sort\n");
 	}
 }

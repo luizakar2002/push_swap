@@ -25,13 +25,13 @@ int	main(int argc, char **argv)
 	//divide_a(a, b);
 	//printf("a\n");
 	//print_stack(*a);
-	sort_a(a, b, list_length(*a));
-	//divide_a(a, b);
+	//sort_a(a, b, list_length(*a));
+	divide_a(a, b);
 	printf("\nmain a_divide_1\n");
 	print_stack(*a);
 	printf("\nmain b\n");
 	print_stack(*b);
-	/*
+	///*
 	divide_b(a, b);
 	printf("\nmain a\n");
 	print_stack(*a);
@@ -122,5 +122,5 @@ int	main(int argc, char **argv)
 	print_stack(*a);
 	printf("\nmain b_divide_8");
 	print_stack(*b);
-	*/
+	// */
 }

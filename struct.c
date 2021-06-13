@@ -66,12 +66,28 @@ int		chunk_length(stack_node *ptr)
 	int count;
 
 	count = 0;
+	if (ptr->next && ptr->next->next == NULL && ptr->chunk == 1 && ptr->next->chunk == 1)
+		return (2);
+	if (ptr->next && ptr->next->next && !ptr->next->next->next && ptr->chunk == 1 && ptr->next->chunk == 1 && ptr->next->next->chunk == 1)
+	{
+		printf("aq\n");
+		return (1);
+	}
 	if (ptr->next && ptr->next->next && ptr->chunk ==  1 && ptr->next->chunk == 1 && ptr->next->next->chunk == 0)
+	{
+		printf("b\n");
 		return (1);
+	} 
 	if (ptr->next && ptr->next->next && ptr->next->next->next && ptr->chunk == 1 && ptr->next->chunk == 1 && ptr->next->next->chunk == 1 && ptr->next->next->next->chunk == 1)
+	{
+		printf("c\n");	
 		return (1);
+	}
 	if (ptr->next && ptr->next->chunk == 2 && ptr->chunk == 1)
+	{
+		printf("d\n");
 		return (1);
+	}
 	if (ptr && !ptr->next && ptr->chunk != 2)
 		return (1);
 	if (ptr->next && ptr->next->next && ptr->next->next->next && ptr->chunk == 1 && ptr->next->chunk == 1 && ptr->next->next->chunk == 1 && ptr->next->next->next->chunk == 2)

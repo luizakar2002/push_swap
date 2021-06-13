@@ -76,6 +76,26 @@ void	insertionSort(int *arr, int n)
 	}
 }
 
+void	ascending_sort(int *arr, int n)
+{
+	int a;
+	int i;
+	int j;
+
+	for (i = 0; i < n; ++i)
+	{
+		for (j = i + 1; j < n; ++j)
+		{
+			if (arr[i] > arr[j]) 
+			{
+				a =  arr[i];
+				arr[i] = arr[j];
+				arr[j] = a;
+			}
+		}
+	}
+}
+
 void	print_stack(stack_node *a)
 {
 	int size;
@@ -100,12 +120,12 @@ int		sorted(stack_node *a)
 	arr = data_to_array(a);
 	arr1 = data_to_array(a);
 	n = list_length(a);
-	insertionSort(arr1, n);
+	ascending_sort(arr1, n);
 	while (n > 0 && *arr == *arr1)
 	{
 		n--;
-		arr--;
-		arr1--;
+		arr++;
+		arr1++;
 	}
 	if (n == 0)
 		return (1);
