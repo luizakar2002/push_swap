@@ -4,6 +4,7 @@ void	divide_a(stack_node **a, stack_node **b)
 {
 	int m;
 	int n;
+	int len;
 	int check;
 	int ch_l;
 	int count;
@@ -12,9 +13,10 @@ void	divide_a(stack_node **a, stack_node **b)
 	n = 0;
 	//if (ft_lstlast(*b)->chunk != 2)
 	//	n = list_length(*b);
+	len = list_length(*b);
 	if ((*a)->chunk == 2)
 		return ;
-	//printf("cha %d\n", chunk_length(*a));
+	printf("cha %d\n", chunk_length(*a));
 	check = 0;
 	if (chunk_length(*a) != list_length(*a))
 		check = 1;
@@ -55,9 +57,10 @@ void	divide_a(stack_node **a, stack_node **b)
 		//printf("a222\n");
 		//print_stack(*a);
 		//print_stack(*b);
-		//printf("%d %d\n", n, chunks_length(*b));
+		printf("%d %d\n", n, chunks_length(*b));
 		//if ()
-		while (chunks_length(*b) != n)
+		//while (chunks_length(*b) != n)
+		while (list_length(*b) != len + n)
 		{
 			if ((*a)->data < m)
 			{
@@ -88,7 +91,7 @@ void	divide_a(stack_node **a, stack_node **b)
 		}
 		(*a)->chunk = 1;
 		//uncomplete_chunk_last(*a)->chunk = 1;
-		//print_stack(*a);
+		print_stack(*a);
 		//print_stack(*b);
 		//printf("verj\n");
 	}

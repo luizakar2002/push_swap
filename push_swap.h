@@ -28,7 +28,8 @@ int			ft_strlen(const char *str);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 int			ft_atoi(const char *str);
 int			count_spaces(char *str);
-int			*get_ints(char *argv);
+int			*get_ints(char *argv, int size);
+int			not_unique(int *arr, int size);
 int			ft_isdigit(char c);
 void		error_exit(int code);
 int			only_num(char *str);
@@ -50,6 +51,7 @@ void		divide_b(stack_node **a, stack_node **b);
 int			is_chunk_2(stack_node *a);
 stack_node	*uncomplete_chunk_last(stack_node *a);
 int			chunks_length(stack_node *a);
-void			ascending_sort(int *arr, int n);
+void		ascending_sort(int *arr, int n);
+char		*ft_strjoin(char const *s1, char const *s2);
 
 #endif

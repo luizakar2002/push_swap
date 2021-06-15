@@ -16,12 +16,12 @@ void	divide_b(stack_node **a, stack_node **b)
 	check = 0;
 	if (chunk_length(*b) != list_length(*b))
 		check = 1;
-	//printf("hesa\n");
+	printf("hesa\n");
 	while (chunk_length(*b) != 2 && chunk_length(*b) != 1 && (*b)->chunk != 2 && chunk_length(*b) != 0)
 	{
 		ch_l = chunk_length(*b);
-		//print_stack(*b);
-		//printf("chhh %d\n", ch_l);
+		print_stack(*b);
+		printf("chhh %d\n", ch_l);
 		m = midpoint(chunk_to_array(*b), ch_l);
 		if (ch_l % 2 == 0)
 			ch_l--;

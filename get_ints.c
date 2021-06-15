@@ -14,17 +14,38 @@ int		count_spaces(char *str)
 	return (count);
 }
 
-int		*get_ints(char *argv)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
+	int			idx;
+	int			idx_join;
+	char		*join;
 
+	if (!s1 || !s2 || !(join = malloc(sizeof(char) *
+					(ft_strlen((char *)s1) + ft_strlen((char *)s2) + 2))))
+		return (NULL);
+	idx = 0;
+	idx_join = 0;
+	while (s1[idx])
+		join[idx_join++] = s1[idx++];
+	idx = 0;
+	join[idx_join++] = ' ';
+	while (s2[idx])
+		join[idx_join++] = s2[idx++];
+	join[idx_join] = '\0';
+	return (join);
+}
+
+
+int		*get_ints(char *argv, int size)
+{
 	int		len;
 	int		start;
 	char	*str;
 	int		*ret;
 	int		*ret1;
-	int		size;
+	int 	size1;
 
-	size = count_spaces(argv) + 1;	
+	size1 = size;	
 	if (!only_num(argv)) //have to ckeck for elements of only type int
 		error_exit(1);
 	if (!(ret = (int *)malloc(size)))
@@ -32,7 +53,6 @@ int		*get_ints(char *argv)
 	ret1 = ret;
 	str = argv;
 	start = 0;
-	str = argv;
 	while (*str && size > 0)
 	{
 		len = 0;
@@ -47,6 +67,8 @@ int		*get_ints(char *argv)
 		start += len + 1;
 		str++;
 	}
+	if (not_unique(ret, size1))
+		error_exit(1);
 	return (ret);
 }
 

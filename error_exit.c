@@ -8,11 +8,11 @@ int		ft_isdigit(char c)
 void	error_exit(int code)
 {
 	if (code == 1)
-		write(1, "Error\n", 7);
+		write(2, "Error\n", 7);
 	else if (code == -1)
-		write(1, "No memory left\n", 16);
+		write(2, "No memory left\n", 16);
 	else if (code == 0)
-		write(1, "NULL value\n", 12);
+		write(2, "NULL value\n", 12);
 	exit(code);
 }
 
@@ -20,7 +20,7 @@ int		only_num(char *str)
 {
 	while (*str)
 	{
-		if (!(ft_isdigit(*str) || *str == ' '))
+		if (!(ft_isdigit(*str) || *str == ' ' || (*str == '-' && ft_isdigit(*(str+1)))))
 			return (0);
 		str++;
 	}
