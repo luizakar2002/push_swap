@@ -25,111 +25,38 @@ int	main(int argc, char **argv)
 		result = ft_strjoin(result, argv[i]);
 		i++;
 	}
+	//printf("res [%s]\n", result);
 	size = count_spaces(result) + 1;
 	arr = get_ints(result, size);
 	a = new_stack(a, arr, size);
-	three_n(a);
-	//(*a)->chunk = 1;
-	//ft_lstlast(*a)->chunk = 1;
-	//divide_a(a, b);
-	//printf("a\n");
 	//print_stack(*a);
+	three_n(a);
 	sort_a(a, b, list_length(*a));
-	//divide_a(a, b);
-	printf("\nmain a_divide_1\n");
-	print_stack(*a);
-	printf("\nmain b\n");
-	print_stack(*b);
+	//printf("\nmain a_divide_1\n");
 	/*
-	divide_b(a, b);
-	printf("\nmain a\n");
+	pa_pb(a, b, 'b');
+	ra_rb(a, 'a');
+	pa_pb(a, b, 'b');
+	pa_pb(a, b, 'b');
+	ra_rb(a, 'b');
+	ra_rb(a, 'b');
+	pa_pb(a, b, 'b');
+	rra_rrb(b, 'b');
+	pa_pb(a, b, 'b');
+	rra_rrb(b, 'b');
+	pa_pb(a, b, 'b');
+	pa_pb(b, a, 'b');
+	pa_pb(b, a, 'b');
+	pa_pb(b, a, 'b');
+	ra_rb(b, 'b');
+	ra_rb(b, 'b');
+	pa_pb(b, a, 'b');
+	sa_sb(b, 'b');
+	pa_pb(b, a, 'b');
+	pa_pb(b, a, 'b');
 	print_stack(*a);
-	printf("\n main b_divide_1\n");
-	print_stack(*b);
-
-	divide_a(a, b);
-	printf("\nmain a_divide_2\n");
-	print_stack(*a);
-	printf("\nmain b\n");
-	print_stack(*b);
-
-	divide_b(a, b);
-	printf("\nmain a\n");
-	print_stack(*a);
-	printf("\nmain b_divide_2");
-	print_stack(*b);
-
-	divide_a(a, b);
-	printf("\nmain a_divide_3\n");
-	print_stack(*a);
-	printf("\nmain b\n");
-	print_stack(*b);
-
-	divide_b(a, b);
-	printf("\nmain a\n");
-	print_stack(*a);
-	printf("\nmain b_divide_3");
-	print_stack(*b);
-	
-	
-	divide_a(a, b);
-	printf("\nmain a_divide_4\n");
-	print_stack(*a);
-	printf("\nmain b\n");
-	print_stack(*b);
-	
-	divide_b(a, b);
-	printf("\nmain a\n");
-	print_stack(*a);
-	printf("\nmain b_divide_4");
-	print_stack(*b);
-	
-	divide_a(a, b);
-	printf("\nmain a_divide_5\n");
-	print_stack(*a);
-	printf("\nmain b\n");
-	print_stack(*b);
-
-	divide_b(a, b);
-	printf("\nmain a\n");
-	print_stack(*a);
-	printf("\nmain b_divide_5");
-	print_stack(*b);
-	
-	divide_a(a, b);
-	printf("\nmain a_divide_6\n");
-	print_stack(*a);
-	printf("\nmain b\n");
-	print_stack(*b);
-
-	divide_b(a, b);
-	printf("\nmain a\n");
-	print_stack(*a);
-	printf("\nmain b_divide_6");
-	print_stack(*b);
-
-	divide_a(a, b);
-	printf("\nmain a_divide_7\n");
-	print_stack(*a);
-	printf("\nmain b\n");
-	print_stack(*b);
-
-	divide_b(a, b);
-	printf("\nmain a\n");
-	print_stack(*a);
-	printf("\nmain b_divide_7");
-	print_stack(*b);
-
-	divide_a(a, b);
-	printf("\nmain a_divide_8\n");
-	print_stack(*a);
-	printf("\nmain b\n");
-	print_stack(*b);
-
-	divide_b(a, b);
-	printf("\nmain a\n");
-	print_stack(*a);
-	printf("\nmain b_divide_8");
-	print_stack(*b);
 	*/
+	//printf("\nmain b\n");
+	//print_stack(*b);
+	//4 67 3 0 9 8 5 62
 }

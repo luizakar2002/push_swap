@@ -34,8 +34,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 int		ft_atoi(const char *str)
 {
-	int sign;
-	int nb;
+	int			sign;
+	int			n;
+	long int	nb;
 
 	sign = 1;
 	nb = 0;
@@ -56,7 +57,10 @@ int		ft_atoi(const char *str)
 		nb = nb * 10 + (*str - '0');
 		str++;
 	}
-	return (nb * sign);
+	if (nb > 2147483647 || nb < -2147483648)
+		error_exit(1);
+	n = nb;
+	return (n * sign);
 }
 
 void	insertionSort(int *arr, int n)

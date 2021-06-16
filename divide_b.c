@@ -16,12 +16,12 @@ void	divide_b(stack_node **a, stack_node **b)
 	check = 0;
 	if (chunk_length(*b) != list_length(*b))
 		check = 1;
-	printf("hesa\n");
+	//printf("hesa\n");
 	while (chunk_length(*b) != 2 && chunk_length(*b) != 1 && (*b)->chunk != 2 && chunk_length(*b) != 0)
 	{
 		ch_l = chunk_length(*b);
-		print_stack(*b);
-		printf("chhh %d\n", ch_l);
+		//print_stack(*b);
+		//printf("chhh %d\n", ch_l);
 		m = midpoint(chunk_to_array(*b), ch_l);
 		if (ch_l % 2 == 0)
 			ch_l--;
@@ -33,7 +33,7 @@ void	divide_b(stack_node **a, stack_node **b)
 			chunk_last(*b)->chunk = 0;
 		while ((*b)->data > m)
 		{
-			pa_pb(b, a);
+			pa_pb(b, a, 'a');
 			if (count == 0)
 				(*a)->chunk = 1;
 			count++;
@@ -45,20 +45,19 @@ void	divide_b(stack_node **a, stack_node **b)
 		{
 			if ((*b)->data > m)
 			{
-				pa_pb(b, a);
+				pa_pb(b, a, 'a');
 				if (count == 0)
 					(*a)->chunk = 1;
 				count++;
 			}
 			else
 			{
-				ra_rb(b);
+				ra_rb(b, 'b');
 				if (check)
 					rotate++;
 				ft_lstlast(*b)->chunk = 0;
 			}
 		}
-
 		(*a)->chunk = 1;
 		if (ft_lstlast(*b)->chunk != 2)
 			ft_lstlast(*b)->chunk = 1;
@@ -67,7 +66,7 @@ void	divide_b(stack_node **a, stack_node **b)
 			ft_lstlast(*b)->chunk = 0;
 		while (rotate > 0)
 		{
-			rra_rrb(b);
+			rra_rrb(b, 'b');
 			rotate--;
 		}
 		(*b)->chunk = 1;
@@ -82,7 +81,7 @@ void	divide_b(stack_node **a, stack_node **b)
 	{
 		if ((*a)->chunk == 2)
 		{
-			pa_pb(b, a);
+			pa_pb(b, a, 'a');
 			(*a)->chunk = 1;
 			if (sorted(*a))
 				(*a)->chunk = 2;
@@ -93,11 +92,11 @@ void	divide_b(stack_node **a, stack_node **b)
 			{
 				if (!(*b)->next)
 				{
-					pa_pb(b, a);
+					pa_pb(b, a, 'a');
 					(*a)->chunk = 2;
 					return ;
 				}
-				pa_pb(b, a);
+				pa_pb(b, a, 'a');
 				(*a)->chunk = 2;
 			}
 		}
@@ -113,7 +112,7 @@ void	divide_b(stack_node **a, stack_node **b)
 		{
 			if (!(*b)->next)
 			{
-				pa_pb(b, a);
+				pa_pb(b, a, 'a');
 				//printf("sos\n");
 				//print_stack(*a);
 				//print_stack(*b);
@@ -121,7 +120,7 @@ void	divide_b(stack_node **a, stack_node **b)
 				b = NULL;
 				return ;
 			}
-			pa_pb(b, a);
+			pa_pb(b, a, 'a');
 			(*a)->chunk = 2;
 		}
 		else
@@ -139,21 +138,21 @@ void	divide_b(stack_node **a, stack_node **b)
 	{
 		//printf("l\n");
 		if ((*b)->data < (*b)->next->data)
-			sa_sb(b);
+			sa_sb(b, 'b');
 		if ((*a)->chunk == 2)
 		{
 			if (list_length(*b) == 2)
 			{
-				pa_pb(b, a);
-				pa_pb(b, a);
+				pa_pb(b, a, 'a');
+				pa_pb(b, a, 'a');
 				*b = NULL;
 				b = NULL;
 				(*a)->chunk = 2;
 				(*a)->next->chunk = 2;
 				return ;
 			}
-			pa_pb(b, a);
-			pa_pb(b, a);
+			pa_pb(b, a, 'a');
+			pa_pb(b, a, 'a');
 			(*a)->chunk = 2;
 			(*a)->next->chunk = 2;
 		}
@@ -177,7 +176,7 @@ void	divide_b(stack_node **a, stack_node **b)
 		//printf("l\n");
 		if ((*a)->chunk == 2)
 		{
-			pa_pb(b, a);
+			pa_pb(b, a, 'a');
 			(*a)->chunk = 1;
 			//printf("sortsort\n");
 			//print_stack(*a);
@@ -189,7 +188,7 @@ void	divide_b(stack_node **a, stack_node **b)
 			}
 			if(*b && (*b)->chunk == 2)
 			{
-				pa_pb(b, a);
+				pa_pb(b, a, 'a');
 				(*a)->chunk = 2;
 			}
 		}

@@ -12,21 +12,21 @@ void	three_n(stack_node **lst)
 	b = (*lst)->next->data;
 	c = (*lst)->next->next->data;
 	if (b < a && a < c)
-		sa_sb(lst);
+		sa_sb(lst, 'a');
 	else if (c < b && b < a)
 	{
-		sa_sb(lst);
-		rra_rrb(lst);
+		sa_sb(lst, 'a');
+		rra_rrb(lst, 'a');
 	}
 	else if (b < c && c < a)
-		ra_rb(lst);
+		ra_rb(lst, 'a');
 	else if (a < c && c < b)
 	{
-		sa_sb(lst);
-		ra_rb(lst);
+		sa_sb(lst, 'a');
+		ra_rb(lst, 'a');
 	}
 	else if (c < a && a < b)
-		rra_rrb(lst);
+		rra_rrb(lst, 'a');
 }
 
 

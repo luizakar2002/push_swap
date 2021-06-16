@@ -11,12 +11,12 @@ typedef struct stack
 	struct stack	*next;
 }				stack_node;
 
-void		pa_pb(stack_node **from, stack_node **to);
-void		sa_sb(stack_node **ptr);
+void		pa_pb(stack_node **from, stack_node **to, char ch);
+void		sa_sb(stack_node **ptr, char ch);
 void		ss(stack_node **a, stack_node **b);
-void		ra_rb(stack_node **ptr);
+void		ra_rb(stack_node **ptr, char ch);
 void		rr(stack_node **a, stack_node **b);
-void		rra_rrb(stack_node **ptr);
+void		rra_rrb(stack_node **ptr, char ch);
 void		rrr(stack_node **a, stack_node **b);
 stack_node	**new_stack(stack_node **ptr, int *arr, int size);
 stack_node	*new_node(int data);

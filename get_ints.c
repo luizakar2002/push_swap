@@ -35,7 +35,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (join);
 }
 
-
 int		*get_ints(char *argv, int size)
 {
 	int		len;
@@ -53,6 +52,7 @@ int		*get_ints(char *argv, int size)
 	ret1 = ret;
 	str = argv;
 	start = 0;
+	//printf("chchch %c\n", argv[35]);
 	while (*str && size > 0)
 	{
 		len = 0;
@@ -62,6 +62,8 @@ int		*get_ints(char *argv, int size)
 			str++;
 		}
 		*ret1 = ft_atoi(ft_substr((char const*)argv, (unsigned int)start, len));
+		//printf("c %c\n", *argv);
+		//printf("argv %s]\n", argv);
 		ret1++;
 		size--;
 		start += len + 1;
