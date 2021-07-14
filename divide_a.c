@@ -19,7 +19,6 @@ void	divide_a(stack_node **a, stack_node **b)
 	check = 0;
 	if (chunk_length(*a) != list_length(*a))
 		check = 1;
-	//printf("chll %d\n", chunk_length(*a));
 	if (chunk_length(*a) == 3)
 		flag = 1;
 	while (chunk_length(*a) != 2 && chunk_length(*a) != 1)
@@ -64,8 +63,7 @@ void	divide_a(stack_node **a, stack_node **b)
 				ft_lstlast(*a)->chunk = 0;
 			}
 		}
-		(*b)->chunk = 1;
-		//printf("oneone %d\n", one_count(*b));
+		(*b)->chunk = 3;
 		if (flag && one_count(*b) == 0 && (*b)->next && (*b)->next->chunk == 2)
 			(*b)->chunk = 2;
 		if(ft_lstlast(*a)->chunk != 2)
@@ -77,13 +75,8 @@ void	divide_a(stack_node **a, stack_node **b)
 			rra_rrb(a, 'a');
 			rotate--;
 		}
-		(*a)->chunk = 1;
+		(*a)->chunk = 3;
 	}
-	//if (flag && (*b)->next->next->next && (*b)->next->next->next->chunk == 2)
-	//{
-	//	printf("mt\n");
-	//	(*b)->next->next->chunk = 2;
-	//}
 	if (chunk_length(*a) == 1)
 	{
 		if ((*a)->data > (*a)->next->data && (*a)->next)
@@ -93,7 +86,7 @@ void	divide_a(stack_node **a, stack_node **b)
 		else
 		{
 			pa_pb(a, b, 'b');
-			(*b)->chunk = 1;
+			(*b)->chunk = 3;
 			if ((*b)->next && (*b)->next->chunk == 2)
 				(*b)->chunk = 2;
 		}
@@ -111,7 +104,7 @@ void	divide_a(stack_node **a, stack_node **b)
 		{
 			pa_pb(a, b, 'b');
 			pa_pb(a, b, 'b');
-			(*b)->chunk = 1;
+			(*b)->chunk = 3;
 			(*b)->next->chunk = 1;
 			if ((*b)->next->next && (*b)->next->next->chunk == 2)
 			{

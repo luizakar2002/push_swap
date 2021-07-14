@@ -61,7 +61,7 @@ stack_node	*ft_lstprev(stack_node *lst)
 	return (lst);
 }
 
-int		one_count(stack_node *ptr)//, int *flag)
+int		one_count(stack_node *ptr)
 {
 	int i;
 
@@ -71,10 +71,6 @@ int		one_count(stack_node *ptr)//, int *flag)
 		i++;
 		ptr = ptr->next;
 	}
-	//if (flag)
-	//	*flag = 1;
-	//if (ptr->chunk == 0 && flag)
-	//	*flag = 0;
 	if (ptr->chunk == 2)
 		i--;
 	return (i);
@@ -85,31 +81,13 @@ int		chunk_length(stack_node *ptr)
 	int count;
 
 	count = 0;
-	//if (one_count(ptr) == 1)//&& one_count(ptr) != 1)
-	//	return (2);
-	//if (one_count(ptr) == 5)
-	//	return (2);
 	if (!ptr)
 		return (0);
-	//if ((one_count(ptr) - 1) % 2 == 1)
-	//	return (2);
-	if (ptr->next && ptr->next->next == NULL && ptr->chunk == 1 && ptr->next->chunk == 1)
-		return (2);
-	if (ptr->next && ptr->next->next && !ptr->next->next->next && ptr->chunk == 1 && ptr->next->chunk == 1 && ptr->next->next->chunk == 1)
+	if (ptr->next && ptr->next->chunk == 3 && ptr->chunk == 3)
 		return (1);
-	if (ptr->next && ptr->next->next && ptr->chunk ==  1 && ptr->next->chunk == 1 && ptr->next->next->chunk == 0)
-		return (1);
-	if (ptr->next && ptr->next->next && ptr->next->next->next && ptr->next->next->next->next && ptr->chunk == 1 && ptr->next->chunk == 1 && ptr->next->next->chunk == 1 && ptr->next->next->next->chunk == 1 && ptr->next->next->next->next->chunk == 0)
-		return (1);
-	if (ptr->next && ptr->next->chunk == 2 && ptr->chunk == 1)
-		return (1);
-	if (ptr && !ptr->next && ptr->chunk != 2)
-		return (1);
-	if (ptr->next && ptr->next->next && ptr->next->next->next && ptr->chunk == 1 && ptr->next->chunk == 1 && ptr->next->next->chunk == 1 && ptr->next->next->next->chunk == 2)
-		return (1);
-	while (ptr)
+	if (ptr->chunk == 3)
 	{
-		if (ptr->chunk == 1)
+		while (ptr)
 		{
 			ptr = ptr->next;
 			while (ptr && ptr->chunk == 0)
@@ -117,10 +95,86 @@ int		chunk_length(stack_node *ptr)
 				ptr = ptr->next;
 				count++;
 			}
-			count += 2;
+			if (ptr)
+				count += 2;
+			else
+				count += 1;
 			return (count);
-		}
-		ptr = ptr->next;
+		}	
 	}
 	return (count);
+}
+
+int		midpoint(int *arr, int n)
+{
+	insertionSort(arr, n);
+	return (arr[n / 2]);
+}
+
+stack_node	*chunk_last(stack_node *b)
+{
+	b = b->next;
+	while (b && b->next && b->chunk != 1)
+	{
+		b = b->next;
+	}
+	return (b);
+}
+
+int		new_chunk_length(stack_node *a)
+{
+	int n;
+
+	n = 0;
+	while (a && a->chunk != 2)
+	{
+		n++;
+		a = a->next;
+	}
+	return (n);
+}
+
+int			chunks_length(stack_node *a)
+{
+	int count;
+
+	count = 0;
+	while (a && a->chunk != 2)
+	{
+		count++;
+		a = a->next;
+	}
+	return (count);
+}
+
+stack_node	**new_stack(stack_node **ptr, int *arr, int size)
+{
+	while (size > 0)
+	{
+		push(ptr, arr[size-1]);
+		size--;
+	}
+	(*ptr)->chunk = 3;
+	ft_lstlast(*ptr)->chunk = 1;
+	return (ptr);
+}
+
+int		not_unique(int *arr, int size)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (arr[i] == arr[j])
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }

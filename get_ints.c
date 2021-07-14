@@ -43,16 +43,16 @@ int		*get_ints(char *argv, int size)
 	int		*ret;
 	int		*ret1;
 	int 	size1;
+	char	*join;
 
 	size1 = size;	
-	if (!only_num(argv)) //have to ckeck for elements of only type int
+	if (!only_num(argv))
 		error_exit(1);
 	if (!(ret = (int *)malloc(size)))
 		error_exit(-1);
 	ret1 = ret;
 	str = argv;
 	start = 0;
-	//printf("chchch %c\n", argv[35]);
 	while (*str && size > 0)
 	{
 		len = 0;
@@ -61,9 +61,9 @@ int		*get_ints(char *argv, int size)
 			len++;
 			str++;
 		}
-		*ret1 = ft_atoi(ft_substr((char const*)argv, (unsigned int)start, len));
-		//printf("c %c\n", *argv);
-		//printf("argv %s]\n", argv);
+		join = ft_substr((char const*)argv, (unsigned int)start, len);
+		*ret1 = ft_atoi(join);
+		//free(join);
 		ret1++;
 		size--;
 		start += len + 1;

@@ -60,6 +60,7 @@ int		ft_atoi(const char *str)
 	if (nb > 2147483647 || nb < -2147483648)
 		error_exit(1);
 	n = nb;
+	//free((char *)str);
 	return (n * sign);
 }
 
@@ -134,4 +135,16 @@ int		sorted(stack_node *a)
 	if (n == 0)
 		return (1);
 	return (0);
+}
+
+void	free_stack(stack_node *a)
+{
+	stack_node	*tmp;
+
+	while (a)
+	{
+		tmp = a->next;
+		a = tmp;
+		free(tmp);
+	}
 }

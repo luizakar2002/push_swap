@@ -53,6 +53,7 @@ stack_node	*uncomplete_chunk_last(stack_node *a);
 int			chunks_length(stack_node *a);
 void		ascending_sort(int *arr, int n);
 char		*ft_strjoin(char const *s1, char const *s2);
-int			one_count(stack_node *ptr);//, int *next_ch);
+int			one_count(stack_node *ptr);
+void		free_stack(stack_node *a);
 
 #endif

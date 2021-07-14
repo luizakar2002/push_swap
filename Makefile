@@ -2,15 +2,13 @@ DIR_HEADERS = ./includes/
 
 DIR_SRCS	= ./
 
-SRC			= main.c \
+SRC			= push_swap.c \
 			error_exit.c \
 			get_ints.c \
 		 	utils.c	\
-		   	new_stack.c \
 			struct.c \
 			functions.c \
 			three_n.c \
-			midpoint.c \
 			divide_a.c \
 			divide_b.c
 
@@ -42,6 +40,6 @@ clean:
 fclean:		clean
 			$(RM) $(NAME)
 
-RE:			fclean all
+re:			fclean all
 
-PHONY:		all clean fclean re
+phony:		all clean fclean re
